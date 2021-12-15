@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Nanum+Gothic&display=swap" rel="stylesheet">
+	<style type="text/css">
+		@font-face{
+			font-family: 'MapoFlowerIsland';
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff');
+		}
+		body{
+			background-color: #0d0d0d;
+			background-size: cover;
+			text-align: center;
+		}
+		h1{
+			color: white;
+		    font-family: 'MapoFlowerIsland';
+			font-size: 5em;
+			font-weight: 100;
+			z-index: 1000;
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			opacity: 0;
+			width: 85vw;
+			text-shadow: 0 0 7px black;
+			letter-spacing: -0.05em;
+			line-height: 1.2;
+			word-spacing: 0.05em;
+			word-break: keep-all;
+			word-wrap: break-word;
+		}
+		@keyframes opc100{
+			from{opacity: 0;} to{opacity: 100;}
+		}
+		@keyframes opc0{
+			from{opacity: 100;} to{opacity: 0;}
+		}
+		@keyframes opcFloat{
+			from{opacity: 100;} to{opacity: 0; top: -600px;}
+		}
+
+		button{
+			background-color: black;
+			border: none;
+			color: white;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 2em;
+			font-family: 'Comfortaa', cursive;
+			font-weight: 100;
+			cursor: pointer;
+			position: relative;
+			margin: 3vh;
+		}
+		button:after{
+			background: none repeat scroll 0 0 transparent;
+			bottom: 0;
+			content: "";
+			display: block;
+			height: 1.5px;
+			left: 50%;
+			position: absolute;
+			background: white;
+			transition: width 0.5s ease 0s, left 0.5s ease 0s;
+			width: 0;
+		}
+		button:hover:after{
+			width: 100%; 
+  			left: 0;
+		}
+
+		#makebaloon{
+			position: absolute;
+			left: 1%;
+			top: 2%;
+			width: 6vw;
+			cursor: pointer;
+		}
+
+		#container{ display: flex; }
+		.message{
+			width: 40%;
+			font-size: 1em;
+			
+			text-align: left;
+			color: white;
+		}
+
+		.lotus{
+			position: absolute;
+			cursor: pointer;
+		}
+		#xxs { top: 150px; }
+		@keyframes xxs {
+			from{top: 150px;} to{top: 160px;}}
+
+		#xs { top: 180px; }
+		@keyframes xs {
+			from{top: 180px;} to{top: 195px;}}
+
+		#s { top: 220px; }
+		@keyframes s {
+			from{top: 220px;} to{top: 200px;}}
+
+		#m { top: 250px; }
+		@keyframes m {
+			from{top: 250px;} to{top: 280px;}}
+
+		#l { top: 300px; }
+		@keyframes l {
+			from{top: 300px;} to{top: 350px;}}
+
+		#xl { top: 380px; }
+		@keyframes xl {
+			from{top: 380px;} to{top: 440px;}}
+
+		#xxl { top: 600px; }
+		@keyframes xxl {
+			from{top: 600px;} to{top: 500px;}}	
+
+		@keyframes float {
+			to{top: -700px;}}
+	</style>
+</head>
+
+<body>
+	<h1 id="title">당신의 소원</h1>
+
+	<button id="launch">Start Yeondeunghoe</button>
+	<img id="makebaloon" src="add.png">
+	<div id="container">
+	<div id="m1" class="message">연등회는 신라에서 시작되어 고려 시대에 국가적 행사로 자리 잡은 불교행사입니다. 2012년 국가무형문화재로 지정된 후, 2020년 유네스코 인류무형문화유산 대표목록에 등재되었습니다.<br><br>연등회에 참여하는 사람들은 자신이 직접 만든 등에 불을 밝히고 거리로 나서며 이는 나와 이웃을 위한 마음의 등을 의미합니다.</div>
+	<div id="m2" class="message">In Korea, Yeondeunghoe(the Lotus Lantern Festival) is a Buddhist event that started in Silla and became a national event during the Goryeo Dynasty. After being designated as a national intangible cultural property in 2012, it was listed on the UNESCO Intangible Cultural Heritage list in 2020.<br><br>People who participate in the lantern party light their own backs and go out to the streets, which means the back of their hearts for me and my neighbors.</div>
+	</div>
+
+	<script type="text/javascript">
+		
+	var text = localStorage.getItem("wish");
+	console.log(text);
+	title.innerText = text;
+
+	var a = ["lotus1","lotus2","lotus3","lotus4","lotus5","lotus6","lotus7"];
+
+	makebaloon.onclick = function(){
+		createBalloon();
+	}
+
+	launch.onclick = function(){
+
+		title.style.animation = "opc100 2s ease-in-out forwards";
+		makebaloon.style.animation = "opc0 1.5s ease-in-out forwards";
+		launch.style.animation = "opc0 1.5s ease-in-out forwards";
+
+		var t = document.getElementsByClassName('lotus');
+		for(var i=0;i<t.length;i++){
+			var k = 0.2 * i; //애니메이션 시간차
+			t[i].style.animation = "float 8s ease-in forwards " + k +"s";
+		
+			t[i].onanimationend =  function(){
+			title.style.animation = "opcFloat 2s ease-in forwards"
+			}
+		}
+	}
+	
+	title.onanimationend = ""
+
+	for(var i=0;i<15;i++){
+		createBalloon();	 
+	}
+
+	function createBalloon(){
+		var t = document.createElement("img");
+		t.style.display = "block";
+		t.src = a[randomBH(0,6)] + ".png";
+		t.className = "lotus";
+
+		var size = randomBH(50,260);
+		t.style.width = size + "px";
+		t.style.zIndex = size;
+		t.style.height = "auto";
+
+		//xxs:50-80, xs:80-110, s:110-140, m:140-170, l:170-200, xl:200-230, xxl:230-260
+		if(size < 80){
+			var b = 1.5 + Math.random();
+			t.id = "xxs";
+			t.style.animation = "xxs " + b + "s ease-in-out infinite alternate";
+			t.style.animationDelay = Math.random() + "s";
+			}
+		if(size >= 80 && size < 110){
+			var c = 2 + Math.random();
+			t.id = "xs";
+			t.style.animation = "xs " + c + "s ease-in-out infinite alternate";
+			t.style.animationDelay = Math.random() + "s";
+			}
+		if(size >= 110 && size < 140){
+			var d = 2.5 + Math.random();
+			t.id = "s";
+			t.style.animation = "s " + d + "s ease-in-out infinite alternate";
+			t.style.animationDelay = Math.random() + "s";
+			}
+		if(size >= 140 && size < 170){
+			var e = 3 + Math.random();
+			t.id = "m";
+			t.style.animation = "m " + e + "s ease-in-out infinite alternate";
+			t.style.animationDelay = Math.random() + "s";
+			}
+		if(size >= 170 && size < 200){
+			var f = 3.5 + Math.random();
+			t.id = "l";
+			t.style.animation = "l " + f + "s ease-in-out infinite alternate";
+			t.style.animationDelay = Math.random() + "s";
+			}
+		if(size >= 200 && size < 230){
+			var g = 4 + Math.random();
+			t.id = "xl";
+			t.style.animation = "xl " + g + "s ease-in-out infinite alternate";
+			t.style.animationDelay = Math.random() + "s";
+			}
+		if(size >= 230){
+			var h = 4 + Math.random();
+			t.id = "xxl";
+			t.style.animation = "xxl " + h + "s ease-in-out infinite alternate";
+			t.style.animationDelay = Math.random() + "s";
+			}	
+		
+		t.onclick = function(e){
+			this.style.animation = "float 3s ease-in-out forwards";
+		}
+
+		t.style.left = Math.random()*screen.availWidth + "px";
+		document.body.appendChild(t);
+		}	
+
+		function randomBH(min, max) {
+		  min = Math.ceil(min);
+		  max = Math.floor(max);
+		  return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+	</script>
+</body>
+</html>

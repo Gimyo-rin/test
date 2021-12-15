@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Nanum+Gothic&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body{
+			text-align: center;
+			background-color: #0d0d0d;
+			background-size: cover;
+			font-family: 'Comfortaa', cursive;
+		}
+		h1{
+			color: white;
+			font-weight: 100;
+			font-size: 3rem;
+		}
+		
+		#textBox{
+			width: 35vw;
+			height: 55vh;
+			margin-top: 4vh;
+			background: none;
+			color: white;
+			font-size: 1rem;
+			border-radius: 10px; border-color: white;
+			border-width: 2px;
+			padding: 4vh;
+			vertical-align : top;
+			font-family: 'Nanum Gothic', sans-serif;
+			line-height: 1.5;
+		}
+		#submit{
+			width: 39vw;
+			height: 6vh;
+			margin: auto; display: block; margin-top: 4vh;
+			
+			font-family: 'Comfortaa', cursive;
+			font-size: 1.5rem;
+			color: #555;
+			background-color: white;
+			border-radius: 10px; border: none;
+		}
+		#submit:hover {
+			background-color: lightgray;
+		}
+	</style>
+</head>
+<body>
+	<h1>Yeondeunghoe</h1>
+
+<div>
+    <form method="POST">
+       <textarea id="textBox" placeholder="기억하고 싶은 것 또는 소원을 입력하세요.&#10;Enter what you want to remember or wish."></textarea>
+    </form>
+	<button id="submit"> Enter </button>
+</div>
+
+<script type="text/javascript">
+	
+	const text = document.querySelector("#textBox");
+
+	submit.onclick = function(){
+		const text = textBox.value;
+		console.log(text);
+		localStorage.setItem("wish", text);
+		location.href = "main.html";
+ 	}
+
+</script>
+</body>
+</html>
